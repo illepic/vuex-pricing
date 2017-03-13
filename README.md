@@ -1,6 +1,6 @@
-# vuex-tutorial
+# vuex-pricing
 
-> A Vue.js project
+> A vuex implementation of pricing
 
 ## Build Setup
 

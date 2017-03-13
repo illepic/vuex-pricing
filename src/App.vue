@@ -28,17 +28,11 @@
 </template>
 
 <script>
-//  import GetTodo from './components/GetTodo.vue'
-//  import CurrentTodos from './components/CurrentTodos.vue'
-//  import CompletedTodos from './components/CompletedTodos.vue'
   import PricingProduct from './components/PricingProduct.vue'
   import PricingAdmin from './components/PricingAdmin.vue'
 
   export default {
     components: {
-//      GetTodo,
-//      CurrentTodos,
-//      CompletedTodos,
       PricingAdmin,
       PricingProduct
     }

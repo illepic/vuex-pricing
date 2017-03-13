@@ -1,5 +1,5 @@
 <template>
-  <div :data-price-container-uuid="uuid" class="price-field-container field-type-wwvs-price-field field-widget-wwvs-price-field" :class="cssState">
+  <div v-if="product" :data-price-container-uuid="uuid" class="price-field-container field-type-wwvs-price-field field-widget-wwvs-price-field" :class="cssState">
 
     <div class="product__debug card">
       <div class="card-header"><small>{{ uuid }}</small></div>
@@ -7,6 +7,7 @@
         <li class="list-group-item">default_price: {{ product.pdata.default_price }}</li>
         <li class="list-group-item">product_id: {{ product.pdata.product_id }}</li>
         <li class="list-group-item">promo_offer: {{ product.pdata.promo_offer_id }}</li>
+        <li class="list-group-item">type: {{ product.pdata.type }}</li>
       </ul>
     </div>
 
