@@ -1,4 +1,5 @@
 import _ from 'lodash'
+// import Vue from 'vue'
 
 import * as types from '../MutationTypes'
 import DurationParse from '../../utils/DurationParse'
@@ -9,7 +10,8 @@ const state = {
 
 const mutations = {
   [types.PRODUCTS_ADD_PRODUCT](state, product) {
-    Object.assign(state.collection, product)
+    // Object.assign(state.collection, product)
+    state.collection = { ...state.collection, 'onlineplus': { pdata: { default_price: '666'}} }
   }
 }
 
