@@ -4,18 +4,46 @@ import * as types from '../MutationTypes'
 import DurationParse from '../../utils/DurationParse'
 
 const state = {
-  products: {}
+  collection: {}
 }
 
 const mutations = {
   [types.PRODUCTS_ADD_PRODUCT](state, product) {
-    _.assign(state.products, product)
+    Object.assign(state.collection, product)
   }
 }
 
 const actions = {
-  addProduct({ commit }, drupalProduct) {
-    
+  addProduct({ commit }, product) {
+    const key = _.head(_.keys(product));
+    const pdata = product[key];
+    const newProd = {
+      [key]: {
+        pdata,
+        zipForm: {
+          zipInput: '',
+          zipRegex: '',
+        },
+        zipPrice: {
+          csp: {
+            channel: '',
+            sponsor: '',
+            promotion: ''
+          },
+          priceForLongestPlan: null,
+          locationId: null,
+        },
+        promoPrice: {
+          csp: {
+            channel: '',
+            sponsor: '',
+            promotion: ''
+          },
+          price: '',
+        }
+      }
+    }
+    commit(types.PRODUCTS_ADD_PRODUCT, newProd)
   }
 }
 
@@ -23,7 +51,7 @@ const getters = {
 
   // Get a ref to a product
   getProductByUuid: (state, getters) => (uuid) => {
-    return state.products[uuid];
+    return state.collection[uuid];
   },
 
   // Do we need to do the extra overhead of checking for various zone things

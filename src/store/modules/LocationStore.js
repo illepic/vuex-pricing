@@ -1,41 +1,39 @@
 import * as types from '../MutationTypes'
 
 const state = {
-  location: {
-    mode: 'pc', // pc|ml
-    border: false,
-    zip: {
-      status: '',
-      zip: '',
-      request: '', // can be a 'bad' zip like 99999, and we need to indicate failure
-      bad: false,
-    },
-    zone: {
-      status: '',
-      request: '',
-      zone: '',
-    },
-    id: {
-      status: '',
-      id: '',
-      name: '',
-      slug: '',
-    },
+  mode: 'pc', // pc|ml
+  border: false,
+  zip: {
+    status: '',
+    zip: '',
+    request: '', // can be a 'bad' zip like 99999, and we need to indicate failure
+    bad: false,
+  },
+  zone: {
+    status: '',
+    request: '',
+    zone: '',
+  },
+  id: {
+    status: '',
+    id: '',
+    name: '',
+    slug: '',
   },
 }
 
 const mutations = {
   [types.ZIP_CHANGE_REQUEST](state, zip) {
-    state.location.zip.status = 'REQUESTING'
-    state.location.zip.request = zip
+    state.zip.status = 'REQUESTING'
+    state.zip.request = zip
   },
   [types.ZIP_CHANGE_SUCCESS](state) {
-    state.location.zip.status = 'SUCCESS'
-    state.location.zip.zip = state.location.zip.request
+    state.zip.status = 'SUCCESS'
+    state.zip.zip = state.zip.request
   },
   [types.ZIP_CHANGE_FAIL](state) {
-    state.location.zip.status = 'FAIL'
-    state.location.zip.bad = true
+    state.zip.status = 'FAIL'
+    state.zip.bad = true
   },
 }
 
@@ -69,7 +67,7 @@ const actions = {
 
 const getters = {
   // Make location info available to comopnents
-  location: ({ location }) => location,
+  location: state => state,
 }
 
 
