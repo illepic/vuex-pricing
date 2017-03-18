@@ -1,7 +1,7 @@
 import _ from 'lodash'
-// import Vue from 'vue'
 
 import * as types from '../MutationTypes'
+import productWidgetState from './ProductWidgetState';
 import DurationParse from '../../utils/DurationParse'
 
 const state = {
@@ -9,43 +9,26 @@ const state = {
 }
 
 const mutations = {
-  [types.PRODUCTS_ADD_PRODUCT](state, product) {
-    // Object.assign(state.collection, product)
-    state.collection = { ...state.collection, 'onlineplus': { pdata: { default_price: '666'}} }
+  [types.PRODUCTS_ADD_PRODUCT](state, { uuid, data }) {
+    state.collection = { ...state.collection, [uuid]: data }
   }
 }
 
 const actions = {
   addProduct({ commit }, product) {
-    const key = _.head(_.keys(product));
-    const pdata = product[key];
-    const newProd = {
-      [key]: {
+    const uuid = _.head(_.keys(product));
+    const pdata = product[uuid];
+
+    // Build up what a product's state should look like at first
+    const productState = {
+      uuid,
+      data: {
         pdata,
-        zipForm: {
-          zipInput: '',
-          zipRegex: '',
-        },
-        zipPrice: {
-          csp: {
-            channel: '',
-            sponsor: '',
-            promotion: ''
-          },
-          priceForLongestPlan: null,
-          locationId: null,
-        },
-        promoPrice: {
-          csp: {
-            channel: '',
-            sponsor: '',
-            promotion: ''
-          },
-          price: '',
-        }
+        widget: productWidgetState
       }
     }
-    commit(types.PRODUCTS_ADD_PRODUCT, newProd)
+
+    commit(types.PRODUCTS_ADD_PRODUCT, productState)
   }
 }
 
