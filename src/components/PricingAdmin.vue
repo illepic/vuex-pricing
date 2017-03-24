@@ -51,7 +51,7 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import mockProducts from '../utils/MockProducts'
+  import mockProducts from '../mocks/MockProducts'
 
   export default {
     data() {

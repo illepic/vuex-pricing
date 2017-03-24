@@ -2,20 +2,25 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store/store'
 import $ from 'jquery'
-import mockProducts from './utils/MockProducts'
+import { set as wwUtils } from './utils/WWUtils'
+
+// Pretend
+import mockProducts from './mocks/MockProducts'
+import wwSettings from './mocks/MockWW'
 
 const app = new Vue({
   el: '#app',
   store,
   render: h => h(App),
   methods: {
-    init(products) {
-//      this.$store.dispatch('addProducts', products)
+    init(wwSettings, products) {
+      wwUtils(wwSettings);
+      this.$store.dispatch('addProducts', products)
     }
   }
 })
 
 $(function() {
   console.log('docready');
-  app.init(mockProducts);
+  app.init(wwSettings, mockProducts);
 });

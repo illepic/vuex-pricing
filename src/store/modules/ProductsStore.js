@@ -21,7 +21,7 @@ const actions = {
       uuid,
       data: {
         pdata,
-        widget: productWidgetState // starting widget state, might need to copy
+        widget: _.cloneDeep(productWidgetState) // starting widget state, might need to copy
       }
     }
 
