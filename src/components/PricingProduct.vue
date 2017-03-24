@@ -42,7 +42,6 @@
         }
       },
       product() {
-        console.log(this.$store.getters.getProductByUuid(this.uuid));
         return this.$store.getters.getProductByUuid(this.uuid)
       }
     }

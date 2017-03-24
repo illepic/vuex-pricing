@@ -37,7 +37,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        Products:
+        <span>Products:</span>
         <div class="btn-group" role="group">
           <button type="button" @click="adminAddProduct('onlineplus')" class="btn btn-secondary">+OnlinePlus</button>
           <button type="button" @click="adminAddProduct('meetings')" class="btn btn-secondary">+Meetings</button>
@@ -60,11 +60,8 @@
       }
     },
     methods: {
-      adminAddProduct(productId) {
-        const product = {
-          [productId]: mockProducts[productId]
-        }
-        this.$store.dispatch('addProduct', product)
+      adminAddProduct(uuid) {
+        this.$store.dispatch('addProduct', { uuid, pdata: mockProducts[uuid] })
       },
       ...mapActions([
         'changeLocation',

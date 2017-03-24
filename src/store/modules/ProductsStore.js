@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 import * as types from '../MutationTypes'
-import productWidgetState from './ProductWidgetState';
+import productWidgetState from '../../utils/ProductWidgetState';
 import DurationParse from '../../utils/DurationParse'
 
 const state = {
@@ -15,20 +15,22 @@ const mutations = {
 }
 
 const actions = {
-  addProduct({ commit }, product) {
-    const uuid = _.head(_.keys(product));
-    const pdata = product[uuid];
-
+  addProduct({ commit }, { uuid, pdata }) {
     // Build up what a product's state should look like at first
     const productState = {
       uuid,
       data: {
         pdata,
-        widget: productWidgetState
+        widget: productWidgetState // starting widget state, might need to copy
       }
     }
 
     commit(types.PRODUCTS_ADD_PRODUCT, productState)
+  },
+  addProducts({ dispatch }, products) {
+    _.forEach(products, (pdata, uuid) => {
+      dispatch('addProduct', { uuid, pdata })
+    })
   }
 }
 
