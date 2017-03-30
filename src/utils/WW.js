@@ -24,6 +24,10 @@ function get(key) {
   return ww[key]
 }
 
+//const NON_DYNAMIC_TYPE = get('pricing').constants.non_dynamic_type.toString();
+//const DYNAMIC_TYPE = get('pricing').constants.dynamic_type.toString();
+//const PROMO_TYPE = get('pricing').constants.promo_type.toString();
+
 export {
   set,
   get,

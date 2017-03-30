@@ -31,7 +31,12 @@ const actions = {
     _.forEach(products, (pdata, uuid) => {
       dispatch('addProduct', { uuid, pdata })
     })
+    dispatch('productsAdded');
+  },
+  productsAdded({ dispatch }) {
+    console.log('all products added')
   }
+
 }
 
 const getters = {

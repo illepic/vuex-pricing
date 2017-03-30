@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store/store'
 import $ from 'jquery'
-import { set as wwUtils } from './utils/WWUtils'
+import { set as wwSet } from './utils/WW'
 
 // Pretend
 import mockProducts from './mocks/MockProducts'
@@ -14,7 +14,7 @@ const app = new Vue({
   render: h => h(App),
   methods: {
     init(wwSettings, products) {
-      wwUtils(wwSettings);
+      wwSet(wwSettings);
       this.$store.dispatch('addProducts', products)
     }
   }

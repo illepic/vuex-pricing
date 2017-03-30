@@ -1,4 +1,5 @@
 import * as types from '../MutationTypes'
+import { get as wwGet } from '../../utils/WW'
 
 const state = {
   mode: 'pc', // pc|ml
@@ -55,6 +56,8 @@ const actions = {
   changeZip({ commit }, zip) {
     commit(types.ZIP_CHANGE_REQUEST, zip)
 
+    console.log(wwGet('pricing'))
+
     return new Promise((resolve, reject) => {
       setTimeout(() => {
 
@@ -62,6 +65,7 @@ const actions = {
         resolve()
       }, 1000)
     })
+
   },
 }
 
