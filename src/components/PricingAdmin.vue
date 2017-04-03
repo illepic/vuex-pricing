@@ -45,6 +45,15 @@
         </div>
      </div>
     </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <span>Actions:</span>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-secondary">Location Price</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 </template>

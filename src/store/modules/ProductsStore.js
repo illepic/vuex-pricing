@@ -31,6 +31,7 @@ const actions = {
     _.forEach(products, (pdata, uuid) => {
       dispatch('addProduct', { uuid, pdata })
     })
+    // Runs when all products added
     dispatch('productsAdded');
   },
   productsAdded({ dispatch }) {

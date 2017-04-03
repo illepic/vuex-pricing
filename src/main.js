@@ -2,19 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store/store'
 import $ from 'jquery'
-import { set as wwSet } from './utils/WW'
+import ww from 'ww'
 
 // Pretend
 import mockProducts from './mocks/MockProducts'
-import wwSettings from './mocks/MockWW'
 
 const app = new Vue({
   el: '#app',
   store,
   render: h => h(App),
   methods: {
-    init(wwSettings, products) {
-      wwSet(wwSettings);
+    init(products) {
       this.$store.dispatch('addProducts', products)
     }
   }
@@ -22,5 +20,6 @@ const app = new Vue({
 
 $(function() {
   console.log('docready');
-  app.init(wwSettings, mockProducts);
+  // Assume ww.settings available global
+  app.init(mockProducts);
 });

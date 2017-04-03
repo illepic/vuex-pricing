@@ -39,7 +39,7 @@ const mutations = {
 }
 
 const actions = {
-  changeLocation({ commit, dispatch }, { zip, id }) {
+  changeLocation({ dispatch }, { zip, id }) {
     // Zip
     if (zip) {
       dispatch('changeZip', zip)
@@ -79,5 +79,5 @@ export default {
   state,
   mutations,
   actions,
-  getters
+  getters,
 }

@@ -38,6 +38,10 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    // Rely on this loaded globally
+    ww: 'ww'
+  },
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
